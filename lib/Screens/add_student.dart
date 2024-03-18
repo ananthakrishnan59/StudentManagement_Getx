@@ -74,6 +74,7 @@ class AddStudentScreen extends StatelessWidget {
                         labelText: 'Name',
                         inputType: TextInputType.name,
                       ),
+                      Constants().kheight10,
                       TextFormFieldWidget(
                         validator: (value) {
                           if (value == null ||
@@ -90,6 +91,7 @@ class AddStudentScreen extends StatelessWidget {
                         labelText: 'Age',
                         inputType: TextInputType.number,
                       ),
+                      Constants().kheight10,
                       TextFormFieldWidget(
                           validator: (value) {
                             if (value == null ||
@@ -104,6 +106,7 @@ class AddStudentScreen extends StatelessWidget {
                           hintText: 'Enter the department',
                           labelText: 'Department',
                           inputType: TextInputType.text),
+                      Constants().kheight10,
                       TextFormFieldWidget(
                         validator: (value) {
                           if (value == null ||
@@ -119,6 +122,7 @@ class AddStudentScreen extends StatelessWidget {
                         labelText: 'Place',
                         inputType: TextInputType.text,
                       ),
+                      Constants().kheight10,
                       TextFormFieldWidget(
                         validator: (value) {
                           if (value == null ||
@@ -134,6 +138,7 @@ class AddStudentScreen extends StatelessWidget {
                         labelText: 'Contact Number',
                         inputType: TextInputType.number,
                       ),
+                      Constants().kheight10,
                       TextFormFieldWidget(
                         validator: (value) {
                           if (value == null ||
@@ -204,7 +209,7 @@ class AddStudentScreen extends StatelessWidget {
                             child: Text(
                               'SUBMIT',
                               style: GoogleFonts.poppins(
-                                  color:  const Color.fromARGB(255, 125, 228, 7), 
+                                  color: const Color.fromARGB(255, 125, 228, 7),
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18),
                             ),
