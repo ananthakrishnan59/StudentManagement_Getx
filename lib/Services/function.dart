@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:stuentmanagment_app/Core/constants.dart';
 import 'package:stuentmanagment_app/Model/student.dart';
-import 'package:stuentmanagment_app/Screens/Widgets/student_list.dart';
 import 'package:stuentmanagment_app/Screens/add_student.dart';
 
 void snackBarFunction({

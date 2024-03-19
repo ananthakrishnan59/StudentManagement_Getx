@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stuentmanagment_app/Core/constants.dart';
 import 'package:stuentmanagment_app/Model/student.dart';
 import 'package:stuentmanagment_app/Screens/Widgets/app_bar.dart';
 import 'package:stuentmanagment_app/Screens/Widgets/circle_avathar.dart';
+import 'package:stuentmanagment_app/Screens/Widgets/elevation_button.dart';
 import 'package:stuentmanagment_app/Screens/Widgets/text_form.dart';
 import 'package:stuentmanagment_app/Screens/add_student.dart';
-import 'package:stuentmanagment_app/Services/function.dart';
- 
+
 
 class EditScreen extends StatelessWidget {
   const EditScreen({super.key, required this.student});
@@ -32,7 +31,6 @@ class EditScreen extends StatelessWidget {
     RxString pickedimage = RxString(student.imageUrl);
 
     return Scaffold(
-      
         appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 70),
           child: AppBarWidgets(
@@ -80,6 +78,7 @@ class EditScreen extends StatelessWidget {
                           labelText: 'Name',
                           inputType: TextInputType.name,
                         ),
+                        Constants().kheight10,
                         TextFormFieldWidget(
                           validator: (value) {
                             if (value == null ||
@@ -96,6 +95,7 @@ class EditScreen extends StatelessWidget {
                           labelText: 'Age',
                           inputType: TextInputType.number,
                         ),
+                        Constants().kheight10,
                         TextFormFieldWidget(
                             validator: (value) {
                               if (value == null ||
@@ -110,6 +110,7 @@ class EditScreen extends StatelessWidget {
                             hintText: 'Enter the department',
                             labelText: 'Department',
                             inputType: TextInputType.text),
+                        Constants().kheight10,
                         TextFormFieldWidget(
                           validator: (value) {
                             if (value == null ||
@@ -125,6 +126,7 @@ class EditScreen extends StatelessWidget {
                           labelText: 'Place',
                           inputType: TextInputType.text,
                         ),
+                        Constants().kheight10,
                         TextFormFieldWidget(
                           validator: (value) {
                             if (value == null ||
@@ -140,6 +142,7 @@ class EditScreen extends StatelessWidget {
                           labelText: 'Contact Number',
                           inputType: TextInputType.number,
                         ),
+                        Constants().kheight10,
                         TextFormFieldWidget(
                           validator: (value) {
                             if (value == null ||
@@ -156,61 +159,18 @@ class EditScreen extends StatelessWidget {
                           inputType: TextInputType.name,
                         ),
                         Constants().kheight10,
-                        ElevatedButton(
-                            style: ButtonStyle(
-                                elevation: const MaterialStatePropertyAll(5),
-                                backgroundColor: MaterialStatePropertyAll(
-                                    Constants().appColor)),
-                            onPressed: () {
-                              if (formKey.currentState!.validate() &&
-                                  pickedimage.isNotEmpty) {
-                                studentsController.updateStudent(StudentModel(
-                                    id: student.id,
-                                    name: nameeditingController.text,
-                                    age: int.parse(ageeditingController.text),
-                                    department:
-                                        departmenteditingController.text,
-                                    place: placeeditingController.text,
-                                    phoneNumber: int.parse(
-                                        phoneNoeditingController.text),
-                                    guardianName:
-                                        guardianNameeditingController.text,
-                                    imageUrl: pickedimage.string));
-                                print(
-                                    'form is validated ${studentsController.students}');
-                                snackBarFunction(
-                                    title: 'Success',
-                                    subtitle: 'Edited Successfully',
-                                    backgroundColor: Colors.green,
-                                    animationDuration:
-                                        const Duration(milliseconds: 2000),
-                                    snackPosition: SnackPosition.BOTTOM);
-                              }
-
-                              // if the image is not picked up
-                              else if (pickedimage.isEmpty) {
-                                snackBarFunction(
-                                    title: 'Submission Failed',
-                                    subtitle: 'Please select an image',
-                                    backgroundColor: Colors.red,
-                                    dismissDirection:
-                                        DismissDirection.horizontal,
-                                    snackPosition: SnackPosition.BOTTOM);
-                              } else {
-                                print('not valid');
-                              }
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 25, vertical: 10),
-                              child: Text(
-                                'SUBMIT',
-                                style: GoogleFonts.openSans(
-                                    color: Constants().whiteColor,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18),
-                              ),
-                            ))
+                        ElevationButtonWidget(
+                            formKey: formKey,
+                            pickedimage: pickedimage,
+                            student: student,
+                            nameeditingController: nameeditingController,
+                            ageeditingController: ageeditingController,
+                            departmenteditingController:
+                                departmenteditingController,
+                            placeeditingController: placeeditingController,
+                            phoneNoeditingController: phoneNoeditingController,
+                            guardianNameeditingController:
+                                guardianNameeditingController)
                       ],
                     ))
               ],
